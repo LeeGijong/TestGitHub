@@ -7,8 +7,8 @@
 #include "GameDataS.h"
 
 
-//¾Ö´Ï¸ŞÀÌ¼Ç °ü·Ã
-//½ÃÄö½º¿ë »óÅÂ ¾Ö´Ï¸ŞÀÌ¼Ç
+//ì• ë‹ˆë©”ì´ì…˜ ê´€ë ¨
+//ì‹œí€€ìŠ¤ìš© ìƒíƒœ ì• ë‹ˆë©”ì´ì…˜
 void CActor::DoAni_Sqe_Hurt()
 {
 	mpActor_Hurt->RunAni_Repeat_One();
@@ -26,7 +26,7 @@ void CActor::DoAni_Sqe_Attack()
 {
 	mpActor_Attack->RunAni_Repeat_One();
 }
-//°ø°İ ½ÃÄö½º
+//ê³µê²© ì‹œí€€ìŠ¤
 void CActor::Sqe_Actor_Attack()
 {
 	auto tDelay = ScaleTo::create(0.57f, 1.0f);
@@ -43,7 +43,7 @@ void CActor::Sqe_Actor_Attack()
 
 	mpActor_Attack->RunAction(tRepeat);
 }
-//ÇÇ°İ ½ÃÄö½º
+//í”¼ê²© ì‹œí€€ìŠ¤
 void CActor::Sqe_Actor_Hurt()
 {
 	auto tDelay = ScaleTo::create(0.25f, 1.0f);
@@ -60,7 +60,7 @@ void CActor::Sqe_Actor_Hurt()
 
 	mpActor_Hurt->RunAction(tRepeat);
 }
-//¾Ö´Ï¸ŞÀÌ¼Ç ½ÇÇàÁß °ü¸®
+//ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰ì¤‘ ê´€ë¦¬
 void CActor::IsAnimating_false()
 {
 	mIsAnimating = false;
@@ -69,17 +69,17 @@ void CActor::IsAnimating_true()
 {
 	mIsAnimating = true;
 }
-//»óÅÂº° ¾Ö´Ï¸ŞÀÌ¼Ç ½ÇÇà
+//ìƒíƒœë³„ ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰
 void CActor::DoAni_State(int tState)
 {
 	if (false == mIsAnimating)
 	{
-		//ÀÌÀü »óÅÂ ÀúÀå
+		//ì´ì „ ìƒíƒœ ì €ì¥
 		mActor_Prev_State = GetState();
 
 		switch (tState)
 		{
-			//´ë±â
+			//ëŒ€ê¸°
 			case ACTOR_STATE_IDLE:
 			{
 				SetState(ACTOR_STATE_IDLE);
@@ -91,7 +91,7 @@ void CActor::DoAni_State(int tState)
 				mpEnemy_Idle->RunAni();
 			}
 			break;
-			//Á¡ÇÁ
+			//ì í”„
 			case ACTOR_STATE_JUMP:
 			{
 				AllHide();
@@ -101,7 +101,7 @@ void CActor::DoAni_State(int tState)
 				mpActor_Jump->RunAni();
 			}
 			break;
-			//°È±â
+			//ê±·ê¸°
 			case ACTOR_STATE_WALK:
 			{
 				SetState(ACTOR_STATE_WALK);
@@ -113,7 +113,7 @@ void CActor::DoAni_State(int tState)
 				mpActor_Walk->RunAni();
 			}
 			break;
-			//´Ş¸®±â
+			//ë‹¬ë¦¬ê¸°
 			case ACTOR_STATE_RUN:
 			{
 				SetState(ACTOR_STATE_RUN);
@@ -125,7 +125,7 @@ void CActor::DoAni_State(int tState)
 				mpActor_Run->RunAni();
 			}
 			break;
-			//°ø°İ
+			//ê³µê²©
 			case ACTOR_STATE_ATTACK:
 			{
 				AllHide();
@@ -149,7 +149,7 @@ void CActor::DoAni_State(int tState)
 				}
 			}
 			break;
-			//ÇÇ°İ
+			//í”¼ê²©
 			case ACTOR_STATE_HURT:
 			{
 				SetState(ACTOR_STATE_HURT);
@@ -162,7 +162,7 @@ void CActor::DoAni_State(int tState)
 				Sqe_Actor_Hurt();
 			}
 			break;
-			//»ç¸Á
+			//ì‚¬ë§
 			case ACTOR_STATE_DIE:
 			{
 				SetState(ACTOR_STATE_DIE);
@@ -174,7 +174,7 @@ void CActor::DoAni_State(int tState)
 				mpActor_Die->RunAni_Repeat_One();
 			}
 			break;
-			//½ºÅ³
+			//ìŠ¤í‚¬
 			case ACTOR_STATE_SKILL:
 			{
 				FireSkill();
@@ -184,7 +184,7 @@ void CActor::DoAni_State(int tState)
 	}
 }
 
-//ÀÌÀü ¾Ö´Ï¸ŞÀÌ¼Ç
+//ì´ì „ ì• ë‹ˆë©”ì´ì…˜
 void CActor::DoAni_Prev()
 {
 	if (false == mIsAnimating)
@@ -227,42 +227,42 @@ void CActor::DoAni_Prev()
 		}
 	}
 }
-//»óÅÂ ¾Ö´Ï¸ŞÀÌ¼Ç Å©¸®¿¡ÀÕÆ®
+//ìƒíƒœ ì• ë‹ˆë©”ì´ì…˜ í¬ë¦¬ì—ì‡íŠ¸
 void CActor::Create()
 {
-	//´ë±â »óÅÂ ¿¡´Ï¸ŞÀÌ¼Ç
+	//ëŒ€ê¸° ìƒíƒœ ì—ë‹ˆë©”ì´ì…˜
 	mpEnemy_Idle = new AnimationBox();
 	mpEnemy_Idle->Create("Project/Actor/Actor_Idle/IDLE_", 7, 0.05, 0.5, 0.0);
-	//°È±â »óÅÂ ¿¡´Ï¸ŞÀÌ¼Ç
+	//ê±·ê¸° ìƒíƒœ ì—ë‹ˆë©”ì´ì…˜
 	mpActor_Walk = new AnimationBox();
 	mpActor_Walk->Create("Project/Actor/Actor_Walk/WALK_", 7, 0.05, 0.5, 0.0);
-	//´Ş¸®±â »óÅÂ ¿¡´Ï¸ŞÀÌ¼Ç
+	//ë‹¬ë¦¬ê¸° ìƒíƒœ ì—ë‹ˆë©”ì´ì…˜
 	mpActor_Run = new AnimationBox();
 	mpActor_Run->Create("Project/Actor/Actor_Run/RUN_", 7, 0.05, 0.5, 0.0);
 	mpActor_Run->SetScale(1.025f);
-	//Á¡ÇÁ »óÅÂ ¿¡´Ï¸ŞÀÌ¼Ç
+	//ì í”„ ìƒíƒœ ì—ë‹ˆë©”ì´ì…˜
 	mpActor_Jump = new AnimationBox();
 	mpActor_Jump->Create("Project/Actor/Actor_Jump/JUMP_", 7, 0.05, 0.5, 0.0);
-	//°ø°İ »óÅÂ ¿¡´Ï¸ŞÀÌ¼Ç
+	//ê³µê²© ìƒíƒœ ì—ë‹ˆë©”ì´ì…˜
 	mpActor_Attack = new AnimationBox();
 	mpActor_Attack->Create_Repeat_One("Project/Actor/Actor_Attack/ATTACK_", 7, 0.075, 0.5, 0.0);
 	mpActor_Attack->SetScale(1.11f);
-	//ÇÇ°İ »óÅÂ ¿¡´Ï¸ŞÀÌ¼Ç
+	//í”¼ê²© ìƒíƒœ ì—ë‹ˆë©”ì´ì…˜
 	mpActor_Hurt = new AnimationBox();
 	mpActor_Hurt->Create_Repeat_One("Project/Actor/Actor_Hurt/HURT_", 7, 0.05, 0.5, 0.0);
 	mpActor_Hurt->SetScale(1.125f);
-	//Á×À½ ¿¡´Ï¸ŞÀÌ¼Ç
+	//ì£½ìŒ ì—ë‹ˆë©”ì´ì…˜
 	mpActor_Die = new AnimationBox();
 	mpActor_Die->Create_Repeat_One("Project/Actor/Actor_Die/DIE_", 7, 0.05, 0.5, 0.0);
 	mpActor_Die->SetScale(1.455f);
-	//±ÙÁ¢ °ø°İ ¾Ö´Ï¸ŞÀÌ¼Ç
+	//ê·¼ì ‘ ê³µê²© ì• ë‹ˆë©”ì´ì…˜
 	mpActor_Attack_Sword = new AnimationBox();
 	mpActor_Attack_Sword->Create_Repeat_One("Project/Actor/Actor_Attack_Sword/sword_", 3, 0.1, 0.5, 0.5);
 	mpActor_Attack_Sword->SetScale(1.5f);
 	mpActor_Attack_Sword->SetOpacity(180.0f);
 	mpActor_Attack_Sword->StopAni();
 	mpActor_Attack_Sword->Hide();
-	//¿ø°Å¸® °ø°İ ¾Ö´Ï¸ŞÀÌ¼Ç(ÃÑ¾Ë)
+	//ì›ê±°ë¦¬ ê³µê²© ì• ë‹ˆë©”ì´ì…˜(ì´ì•Œ)
 	for (ti = 0; ti < 20; ti++)
 	{
 		mpActor_Attack_Bullet[ti] = new AnimationBox();
@@ -271,7 +271,7 @@ void CActor::Create()
 		mpActor_Attack_Bullet[ti]->Hide();
 		mpActor_Attack_Bullet[ti]->SetOpacity(240.0f);
 	}
-	//½ºÅ³ ¾Ö´Ï¸ŞÀÌ¼Ç
+	//ìŠ¤í‚¬ ì• ë‹ˆë©”ì´ì…˜
 	mpActor_Skill_1 = new AnimationBox();
 	mpActor_Skill_1->Create("Project/Actor/Skill/Bullet/bullet_", 8, 0.05, 0.5, 0.5);
 	mpActor_Skill_1->StopAni();
@@ -371,7 +371,7 @@ void CActor::SetLayer(Layer *tpLayer)
 	mpActor_Skill_2->SetScene(tpLayer);
 	mpActor_Skill_3->SetScene(tpLayer);
 }
-//»óÅÂ °Ù¼Â
+//ìƒíƒœ ê²Ÿì…‹
 void CActor::SetState(int tState)
 {
 	mActor_State = tState;
@@ -446,13 +446,13 @@ void CActor::SetFlipX(bool tFlip)
 	mpActor_Hurt->SetFlipX(tFlip);
 	mpActor_Die->SetFlipX(tFlip);
 }
-//°ø°İ °ü·Ã
+//ê³µê²© ê´€ë ¨
 
-//±ÙÁ¢ °ø°İ Visible ÆÇ´Ü
+//ê·¼ì ‘ ê³µê²© Visible íŒë‹¨
 bool CActor::IsShowSwodAttack()
 {
 	return mpActor_Attack_Sword->IsShow();
-}//±Ù°Å¸® °ø°İ ½ÇÇà
+}//ê·¼ê±°ë¦¬ ê³µê²© ì‹¤í–‰
 void CActor::DoSwodAttack()
 {
 	if (MOVE_DIR_LEFT == mMoveDir)
@@ -471,19 +471,19 @@ void CActor::DoSwodAttack()
 	mpActor_Attack_Sword->RunAni_Repeat_One();
 
 }
-//±Ù°Å¸® °ø°İ ¼ÂÆ÷Áö¼Ç
+//ê·¼ê±°ë¦¬ ê³µê²© ì…‹í¬ì§€ì…˜
 void CActor::SetPositionSwordAttack()
 {
 	mAttackVec.x = mVecActor.x + mMoveDir * 30;
 	mAttackVec.y = mVecActor.y + 35;
 	mpActor_Attack_Sword->SetPosition(mAttackVec);
 }
-//±Ù°Å¸® °ø°İ ÁßÁö
+//ê·¼ê±°ë¦¬ ê³µê²© ì¤‘ì§€
 void CActor::StopSwodAttack()
 {
 	mpActor_Attack_Sword->Hide();
 }
-//±ÙÁ¢ °ø°İ ½ÃÄö½º
+//ê·¼ì ‘ ê³µê²© ì‹œí€€ìŠ¤
 void CActor::SwordAttackSqe()
 {
 	auto tDelay = ScaleTo::create(0.3f, 1.0f);
@@ -498,12 +498,12 @@ void CActor::SwordAttackSqe()
 
 	mpActor_Attack_Sword->RunAction(tRepeat);
 }
-//¿ø°Å¸® Visible ÆÇ´Ü
+//ì›ê±°ë¦¬ Visible íŒë‹¨
 bool CActor::IsShowBulletAttack(int tIndex)
 {
 	return mpActor_Attack_Bullet[tIndex]->IsShow();
 }
-//¹ß»ç
+//ë°œì‚¬
 void CActor::FireBullet()
 {
 	
@@ -535,7 +535,7 @@ void CActor::FireBullet()
 		mCurBulletIndex = 0;
 	}
 }
-//ÃÑ¾Ë ÀÌµ¿
+//ì´ì•Œ ì´ë™
 void CActor::MoveBullet()
 {
 	for (ti = 0; ti < 20; ti++)
@@ -563,13 +563,13 @@ void CActor::MoveBullet()
 		}
 	}
 }
-//½ºÅ³ °ü·Ã
-//½ºÅ³ Visible ÆÇ´Ü
+//ìŠ¤í‚¬ ê´€ë ¨
+//ìŠ¤í‚¬ Visible íŒë‹¨
 //bool CActor::IsShowSkill()
 //{
 //	return mpActor_Skill_1->IsShow();
 //}
-//½ºÅ³ ¹ß»ç
+//ìŠ¤í‚¬ ë°œì‚¬
 void CActor::FireSkill()
 {
 	mSkillUseMP = CGameDataS::GetInstance()->GetActorCurMP();
@@ -694,7 +694,7 @@ void CActor::FireSkill()
 		mSkill_State = SKILL_STATE_ALIVE;
 	}
 }
-//½ºÅ³ ÀÌµ¿
+//ìŠ¤í‚¬ ì´ë™
 void CActor::MoveSkill(float dt)
 {
 	if (mSkill_State == SKILL_STATE_ALIVE)
@@ -717,23 +717,6 @@ void CActor::MoveSkill(float dt)
 			}
 			break;
 		}
-		/*
-		if (2 == mSkillUseMP)
-		{
-			this->MoveSkillAttribute(mpActor_Skill_1, 2.0f);
-		}
-		else if (4 == mSkillUseMP)
-		{
-			this->MoveSkillAttribute(mpActor_Skill_2, 1.5f);
-		}
-		else if (6 == mSkillUseMP)
-		{
-			this->MoveSkillAttribute(mpActor_Skill_3, 6.0f);
-		}
-		else
-		{
-			this->MoveSkillAttribute(mpActor_Skill_2, 1.0f);
-		}*/
 	}
 }
 
@@ -742,7 +725,7 @@ void CActor::ActorAttackIsCollision()
 {
 
 }
-//ÀÌµ¿ °ü·Ã
+//ì´ë™ ê´€ë ¨
 void CActor::MoveActor()
 {
 		
@@ -752,7 +735,7 @@ void CActor::MoveActor()
 		{
 			float tMoveActorX = mVecActor.x + mMoveDir * mMoveSpeed;
 
-			//xÃà Attribute ¿Í Ãæµ¹ ÆÇÁ¤
+			//xì¶• Attribute ì™€ ì¶©ëŒ íŒì •
 			int tRow = mTotalRowCount - (mVecActor.y + 32) / mTileH;
 
 			if (MOVE_DIR_LEFT == mMoveDir)
@@ -781,55 +764,55 @@ void CActor::MoveActor()
 }
 void CActor::KeyInPutSetActorSpeed()
 {
-	//´Ş¸®±â ¸ğµå
+	//ë‹¬ë¦¬ê¸° ëª¨ë“œ
 	if (mpScene->isRunPressed == true)
 	{	
-		//¿ŞÂÊ ÀÌµ¿
+		//ì™¼ìª½ ì´ë™
 		if (mpScene->isLeftPressed == true)
 		{
 			mMoveDir = MOVE_DIR_LEFT;
 			mMoveSpeed = 8;
 		}
-		//¿À¸¥ÂÊ ÀÌµ¿
+		//ì˜¤ë¥¸ìª½ ì´ë™
 		else if (mpScene->isRightPressed == true)
 		{
 			mMoveDir = MOVE_DIR_RIGHT;
 			mMoveSpeed = 8;
 		}
-		//¿ŞÂÊ ¿À¸¥ÂÊ ¸ğµÎ ¾È´­·¶À»¶§´Â ¿òÁ÷ÀÌÁö X
+		//ì™¼ìª½ ì˜¤ë¥¸ìª½ ëª¨ë‘ ì•ˆëˆŒë €ì„ë•ŒëŠ” ì›€ì§ì´ì§€ X
 		else
 		{
 			mMoveSpeed = 0;
 		}
 	}
-	//°È±â ¸ğµå
+	//ê±·ê¸° ëª¨ë“œ
 	else if(mpScene->isRunPressed == false)
 	{
-		//¿ŞÂÊ ÀÌµ¿
+		//ì™¼ìª½ ì´ë™
 		if (mpScene->isLeftPressed == true)
 		{
 			mMoveDir = MOVE_DIR_LEFT;
 			mMoveSpeed = 4;
 		}
-		//¿À¸¥ÂÊ ÀÌµ¿
+		//ì˜¤ë¥¸ìª½ ì´ë™
 		else if (mpScene->isRightPressed == true)
 		{
 			mMoveDir = MOVE_DIR_RIGHT;
 			mMoveSpeed = 4;
 		}
-		//¿ŞÂÊ ¿À¸¥ÂÊ ¸ğµÎ ¾È´­·¶À»¶§´Â ¿òÁ÷ÀÌÁö X
+		//ì™¼ìª½ ì˜¤ë¥¸ìª½ ëª¨ë‘ ì•ˆëˆŒë €ì„ë•ŒëŠ” ì›€ì§ì´ì§€ X
 		else
 		{
 			mMoveSpeed = 0;
 		}
 	}
-	//¾çÂÊ ¸ğµÎ ´­·ÁÁ³À»¶§ ¿òÁ÷ÀÌÁö X
+	//ì–‘ìª½ ëª¨ë‘ ëˆŒë ¤ì¡Œì„ë•Œ ì›€ì§ì´ì§€ X
 	if (mpScene->isLeftPressed == true && mpScene->isRightPressed == true)
 	{
 		mMoveSpeed = 0;
 	}
 }
-//Á¡ÇÁ °ü·Ã
+//ì í”„ ê´€ë ¨
 void CActor::JumpStart()
 {
 	float tPower = 20.0f;
@@ -871,7 +854,7 @@ void CActor::JumpGravity()
 
 		this->SetPositionY(this->GetPosition().y - mJumpPower);
 	}
-	//ÂøÁö½Ã ÀÌÀü ¾Ö´Ï¸ŞÀÌ¼Ç ½ÇÇà
+	//ì°©ì§€ì‹œ ì´ì „ ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰
 	else if (mJumpState == JUMP_STATE_LANDING)
 	{
 		DoAni_Prev();		
@@ -885,12 +868,12 @@ void CActor::JumpGravity()
 		mJumpPower = 0;
 	}
 }
-//¸Ê
+//ë§µ
 void CActor::SetTileMap(CTileMap *tpTileMap)
 {
 	mpTileMap = tpTileMap;
 }
-//¹Ù´Ú Ãæµ¹
+//ë°”ë‹¥ ì¶©ëŒ
 bool CActor::IsCollision()
 {
 	mIsCollision = false;
@@ -912,7 +895,7 @@ bool CActor::IsCollision()
 
 	if (mJumpState != JUMP_STATE_UP)
 	{
-		//yÃà Attribute ¿Í Ãæµ¹ ÆÇÁ¤
+		//yì¶• Attribute ì™€ ì¶©ëŒ íŒì •
 		if (1 == mAttribute)
 		{
 			mMapHeight = (mTotalRowCount - tRow)*mTileH;		
@@ -946,7 +929,7 @@ bool CActor::IsCollision()
 
 	return true;
 }
-//ÁöÇü Ãæµ¹ XÃà
+//ì§€í˜• ì¶©ëŒ Xì¶•
 void CActor::MoveSkillAttribute(AnimationBox *tpAnimationBox,float tScale)
 {
 	mMapWidthPixel = mTileW*mTotalColCount;
